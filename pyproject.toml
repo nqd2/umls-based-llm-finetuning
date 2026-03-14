@@ -1,0 +1,35 @@
+[project]
+name = "umls-based-llm-finetuning"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = { text = "MIT" }
+
+dependencies = [
+  "transformers",
+  "accelerate",
+  "peft",
+  "bitsandbytes",
+  "trl",
+  "datasets",
+  "sentencepiece",
+  "huggingface_hub",
+]
+
+[project.optional-dependencies]
+dev = [
+  "python-dotenv",
+]
+
+[project.scripts]
+umls2qa = "umls2qa.cli:main"
+train-qwen3-qlora = "scripts.train_qwen3_qlora:main"
+merge-export = "scripts.merge_and_export:main"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
